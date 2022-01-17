@@ -3,6 +3,7 @@ const app = express();
 const port = 5000
 const cors = require('cors');
 
+const chars = "abcdefghijklmnopqrstuvwxyz"
 const users = { 
     users_list :
     [
@@ -67,23 +68,35 @@ app.get('/users/:id', (req, res) => {
 
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
+    userToAdd['id'] = generateID()
     addUser(userToAdd);
-    res.status(200).end();
+    res.status(201).send(userToAdd).end();
 });
 
 function addUser(user) {
     users['users_list'].push(user);
 }
 
-app.delete('/users/:id', (req, res) => {
-    const id = req.params.id;
+function generateID() {
+    out = "";
+    for (i = 0; i < 6; i++) {
+        if (i < 3)
+            out += chars[Math.floor(Math.random() * 26)]
+        else
+            out += Math.floor(Math.random() * 9)
+    }
+    return out
+}
+
+app.delete('/users', (req, res) => {
+    const id = req.body['id'];
     let result = findUserById(id);
     if (result === undefined || result.length == 0)
         res.status(404).send('Resource not found.');
     else
     {
         users['users_list'] = users['users_list'].filter( (user) => user['id'] != id);
-        res.status(200).end();
+        res.status(204).end();
     }
 })
 
