@@ -59,7 +59,7 @@ function MyApp() {
 
   async function makeDeleteCall(id) {
     try {
-      const response = await axios.delete('http://localhost:5000/users', { data: { "id": id } });
+      const response = await axios.delete(`http://localhost:5000/users/${id}`);
       return response;
     } catch (error) {
       console.log(error);

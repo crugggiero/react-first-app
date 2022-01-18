@@ -88,8 +88,8 @@ function generateID() {
     return out
 }
 
-app.delete('/users', (req, res) => {
-    const id = req.body['id'];
+app.delete('/users/:id', (req, res) => {
+    const id = req.params.id;
     let result = findUserById(id);
     if (result === undefined || result.length == 0)
         res.status(404).send('Resource not found.');
