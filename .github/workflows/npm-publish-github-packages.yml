@@ -27,4 +27,10 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm test
+      # - run: npm test
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${a130dbe9-b812-4e7f-bbab-1607f3e3a7d5}
+          heroku_app_name: "zurf"
+          heroku_email: "eeluu19@gmail.com""
