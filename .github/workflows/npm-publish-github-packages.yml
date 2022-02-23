@@ -5,13 +5,13 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, expressjs-backend]
   pull_request:
-    branches: [main]
+    branches: [main, expressjs-backend]
 
 defaults:
   run:
-    working-directory: ./expressjs-backend
+    working-directory: ./react-frontend
 
 jobs:
   build:
@@ -35,6 +35,6 @@ jobs:
 
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: "26ffd517-0312-4979-bb0b-074bc784e489"
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "test-csc307"
           heroku_email: "ruggicar555@gmail.com"
