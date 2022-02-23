@@ -38,3 +38,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "test-csc307"
           heroku_email: "ruggicar555@gmail.com"
+          appdir: "react-frontend"
