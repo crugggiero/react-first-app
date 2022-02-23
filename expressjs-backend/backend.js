@@ -38,9 +38,6 @@ app.get("/users/:id", async (req, res) => {
 
 app.post("/users", async (req, res) => {
   const userToAdd = req.body;
-  //userToAdd['id'] = generateID()
-  //addUser(userToAdd);
-  //res.status(201).send(userToAdd).end();
   const savedUser = await userServices.addUser(userToAdd);
   if (savedUser) res.status(201).send(savedUser).end();
   else res.status(500).end();
