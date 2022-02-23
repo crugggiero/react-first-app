@@ -35,6 +35,6 @@ jobs:
 
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          heroku_api_key: ${26ffd517-0312-4979-bb0b-074bc784e489}
+          heroku_api_key: ${{26ffd517-0312-4979-bb0b-074bc784e489}}
           heroku_app_name: "test-csc307"
           heroku_email: "ruggicar555@gmail.com"
