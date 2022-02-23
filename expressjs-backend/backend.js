@@ -28,8 +28,12 @@ app.get("/users", async (req, res) => {
 app.get("/users/:id", async (req, res) => {
   const id = req.params.id;
   const result = userServices.findUserById(id);
+<<<<<<< HEAD
   if (result === undefined || result.length === null)
     res.status(404).send("Resource not found.");
+=======
+  if (result === undefined || result.length === null) res.status(404).send("Resource not found.");
+>>>>>>> 3eb380b40ed6629e13c6036bc5d6c8a2bfdb888e
   else {
     result = { users_list: result };
     res.send(result);
@@ -57,8 +61,13 @@ app.delete("/users/:id", (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
+=======
+app.listen(process.env.PORT || port, () => {
+  console.log("REST API is listening.");
+>>>>>>> 3eb380b40ed6629e13c6036bc5d6c8a2bfdb888e
 });
 
 function addUser(user) {
